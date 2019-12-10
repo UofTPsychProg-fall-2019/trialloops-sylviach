@@ -17,23 +17,27 @@ from psychopy import visual, core, event, gui, logging
 # open a white full screen window
 win = visual.Window(fullscr=True, allowGUI=False, color='white', unit='height') 
 
-# uncomment if you use a clock. Optional because we didn't cover timing this week, 
-# but you can find examples in the tutorial code 
-#trialClock = core.Clock()
-
-#%% up to you!
-# this is where you build a trial that you might actually use one day!
-# just try to make one trial ordering your lines of code according to the 
-# sequence of events that happen on one trial
-# if you're stuck you can use the responseExercise.py answer as a starting point 
+# Escape method
+event.globalKeys.add(key='q',func=core.quit)
 
 # maybe start by making stimulus objects (e.g. myPic = visual.ImageStim(...))  
+myStimulus = visual.TextStim(win=win, name='Vignette',
+    text='Here is Tommy. This morning Tommy brought a cupcake and he was going to eat this cupcake at snack time. Tommy put it on the table. Then, Tommy went out to play. Next, Dave came \nin and found that there was this cupcake on the table. Dave was hungry. Dave knew that \nthis cupcake is Tommy’s, but he took away the cupcake and ate it without asking Tommy.',
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='black', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=0.0)
 
 # then draw all stimuli
+myStimulus.draw()
 
 # then flip your window
+win.flip()
 
 # then record your responses
+Rating = visual.RatingScale(win=win, name='Rating', marker='triangle', size=1.0, pos=[0.0, -0.4], low=1, high=5, labels=['not okay at all', ' a little not okay', ' neutral', ' a little okay', ' very okay'], scale='How okay or not okay is this behaviour described?')
+
 
 
 #%% Required clean up
